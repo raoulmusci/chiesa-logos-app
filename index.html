@@ -24,17 +24,22 @@
     <select id="filter-year" class="border rounded p-2 w-full sm:w-auto">
       <option value="">Tutti gli anni</option>
     </select>
+    <label for="filter-month" class="sr-only">Mese</label>
+    <select id="filter-month" class="border rounded p-2 w-full sm:w-auto">
+      <option value="">Tutti i mesi</option>
+    </select>
   </div>
 </header>
 <main id="main" class="flex-1 max-w-6xl mx-auto p-4"></main>
 <footer class="text-center text-sm text-gray-500 p-4">© Archivio Sermoni</footer>
 <script>
 (function(){
- const state={data:[],filtered:[],page:1,query:'',yearFilter:'',verseFilter:''};
+ const state={data:[],filtered:[],page:1,query:'',yearFilter:'',monthFilter:'',verseFilter:''};
  const PAGE_SIZE=20;
  const main=document.getElementById('main');
  const searchInput=document.getElementById('search');
  const yearSelect=document.getElementById('filter-year');
+ const monthSelect=document.getElementById('filter-month');
  const verseSelect=document.getElementById('filter-verse');
  function fetchCSV() {
   return fetch('data/sermoni.csv').then(r => r.text()); // usa UTF-8 di default
@@ -89,8 +94,9 @@ function applyFilters(){
     const hay=[r['Titolo predicazione'],r['Testo biblico'],r['Predicatore']].map(normalize).join(' ');
     const matchQuery=hay.includes(q);
     const matchYear=!state.yearFilter||r._date.getFullYear().toString()===state.yearFilter;
+    const matchMonth=!state.monthFilter||(r._date.getMonth()+1).toString()===state.monthFilter;
     const matchVerse=!state.verseFilter||r['Testo biblico']===state.verseFilter;
-    return matchQuery&&matchYear&&matchVerse;
+    return matchQuery&&matchYear&&matchMonth&&matchVerse;
   });
   state.page=1;
   renderList();
@@ -181,6 +187,7 @@ function updateHash(){
   const params=new URLSearchParams();
   if(state.query) params.set('q',state.query);
   if(state.yearFilter) params.set('year',state.yearFilter);
+  if(state.monthFilter) params.set('month',state.monthFilter);
   if(state.verseFilter) params.set('verse',state.verseFilter);
   if(state.page>1) params.set('page',state.page);
   const qs=params.toString();
@@ -199,31 +206,38 @@ function handleHash(){
     state.query=params.get('q')||'';
     state.page=parseInt(params.get('page'),10)||1;
     state.yearFilter=params.get('year')||'';
+    state.monthFilter=params.get('month')||'';
     state.verseFilter=params.get('verse')||'';
     searchInput.value=state.query;
     yearSelect.value=state.yearFilter;
+    monthSelect.value=state.monthFilter;
     verseSelect.value=state.verseFilter;
     const q=normalize(state.query);
     state.filtered=state.data.filter(r=>{
       const hay=[r['Titolo predicazione'],r['Testo biblico'],r['Predicatore']].map(normalize).join(' ');
       const matchQuery=hay.includes(q);
       const matchYear=!state.yearFilter||r._date.getFullYear().toString()===state.yearFilter;
+      const matchMonth=!state.monthFilter||(r._date.getMonth()+1).toString()===state.monthFilter;
       const matchVerse=!state.verseFilter||r['Testo biblico']===state.verseFilter;
-      return matchQuery&&matchYear&&matchVerse;
+      return matchQuery&&matchYear&&matchMonth&&matchVerse;
     });
-    if(!state.filtered.length && !state.query && !state.yearFilter && !state.verseFilter) state.filtered=state.data;
+    if(!state.filtered.length && !state.query && !state.yearFilter && !state.monthFilter && !state.verseFilter) state.filtered=state.data;
     renderList();
   }
 }
 const debounced=(fn,ms)=>{let t;return(...args)=>{clearTimeout(t);t=setTimeout(()=>fn(...args),ms);}};
 searchInput.addEventListener('input',debounced(e=>{state.query=e.target.value;applyFilters();},150));
 yearSelect.addEventListener('change',e=>{state.yearFilter=e.target.value;applyFilters();});
+monthSelect.addEventListener('change',e=>{state.monthFilter=e.target.value;applyFilters();});
 verseSelect.addEventListener('change',e=>{state.verseFilter=e.target.value;applyFilters();});
 window.addEventListener('hashchange',handleHash);
 window.__app={getState:()=>state,setQuery:q=>{searchInput.value=q;state.query=q;applyFilters();},goToPage:p=>{state.page=p;renderList();updateHash();}};
 function populateFilters(){
   const years=[...new Set(state.data.map(r=>r._date.getFullYear().toString()))].sort((a,b)=>b-a);
   yearSelect.innerHTML='<option value="">Tutti gli anni</option>'+years.map(y=>`<option value="${y}">${y}</option>`).join('');
+  const monthNames=['Gennaio','Febbraio','Marzo','Aprile','Maggio','Giugno','Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre'];
+  const months=[...new Set(state.data.map(r=>(r._date.getMonth()+1).toString()))].sort((a,b)=>a-b);
+  monthSelect.innerHTML='<option value="">Tutti i mesi</option>'+months.map(m=>`<option value="${m}">${monthNames[m-1]}</option>`).join('');
   const verses=[...new Set(state.data.map(r=>r['Testo biblico']).filter(Boolean))].sort();
   verseSelect.innerHTML='<option value="">Tutti i versetti</option>'+verses.map(v=>`<option value="${v}">${v}</option>`).join('');
 }
