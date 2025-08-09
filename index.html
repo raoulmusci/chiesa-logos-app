@@ -13,19 +13,29 @@
 <body class="bg-gray-50 min-h-screen flex flex-col">
 <header class="bg-white shadow sticky top-0 z-10">
   <div class="max-w-4xl mx-auto p-4 flex items-center gap-4">
-    <h1 class="text-2xl font-bold flex-1">Archivio Sermoni</h1>
+    <a href="#/" class="text-2xl font-bold flex-1">Archivio Sermoni</a>
     <label for="search" class="sr-only">Cerca</label>
     <input id="search" type="text" placeholder="Cerca..." class="border rounded p-2 w-48 sm:w-64" />
+    <label for="filter-verse" class="sr-only">Versetto</label>
+    <select id="filter-verse" class="border rounded p-2">
+      <option value="">Tutti i versetti</option>
+    </select>
+    <label for="filter-year" class="sr-only">Anno</label>
+    <select id="filter-year" class="border rounded p-2">
+      <option value="">Tutti gli anni</option>
+    </select>
   </div>
 </header>
 <main id="main" class="flex-1 max-w-4xl mx-auto p-4"></main>
 <footer class="text-center text-sm text-gray-500 p-4">© Archivio Sermoni</footer>
 <script>
 (function(){
- const state={data:[],filtered:[],page:1,query:''};
+ const state={data:[],filtered:[],page:1,query:'',yearFilter:'',verseFilter:''};
  const PAGE_SIZE=20;
  const main=document.getElementById('main');
  const searchInput=document.getElementById('search');
+ const yearSelect=document.getElementById('filter-year');
+ const verseSelect=document.getElementById('filter-verse');
  function fetchCSV(){return fetch('data/sermoni.csv').then(r=>r.text());}
  function parseCSV(text){
    const rows=[]; let field='',row=[],inQuotes=false; let i=0;
@@ -48,26 +58,41 @@
    return out;
  }
  function normalize(str){return str.normalize('NFD').replace(/\p{Diacritic}/gu,'').toLowerCase();}
- function load(){
-   main.innerHTML='<p class="animate-pulse text-center py-10">Caricamento...</p>';
-   fetchCSV().then(t=>{
-     const rows=parseCSV(t);
-     const valid=rows.filter(r=>r['Data']&&r['Titolo predicazione']);
-     valid.forEach((r,i)=>{r.id=i+1; const [d,m,y]=r['Data'].split('/'); r._date=new Date(+y,+m-1,+d);});
-     valid.sort((a,b)=>b._date-a._date);
-     state.data=valid;
-     handleHash();
-   }).catch(e=>{main.innerHTML='<p class="text-red-500">Errore caricamento dati</p>';});
- }
- function applyFilters(){
-   const q=normalize(state.query);
-   state.filtered=state.data.filter(r=>{
-     const hay=[r['Titolo predicazione'],r['Testo biblico'],r['Predicatore']].map(normalize).join(' ');
-     return hay.includes(q);
-   });
-   state.page=1;
-   renderList();
-   updateHash();
+function load(){
+  main.innerHTML='<p class="animate-pulse text-center py-10">Caricamento...</p>';
+  fetchCSV().then(t=>{
+    const rows=parseCSV(t);
+    const valid=rows.filter(r=>r['Data']&&r['Titolo predicazione']);
+    valid.forEach((r,i)=>{
+      r.id=i+1;
+      let d;
+      if(r['Data'].includes('-')){
+        const [y,m,day]=r['Data'].split('-');
+        d=new Date(+y,+m-1,+day);
+      }else{
+        const [day,m,y]=r['Data'].split('/');
+        d=new Date(+y,+m-1,+day);
+      }
+      r._date=d;
+    });
+    valid.sort((a,b)=>b._date-a._date);
+    state.data=valid;
+    populateFilters();
+    handleHash();
+  }).catch(e=>{main.innerHTML='<p class="text-red-500">Errore caricamento dati</p>';});
+}
+function applyFilters(){
+  const q=normalize(state.query);
+  state.filtered=state.data.filter(r=>{
+    const hay=[r['Titolo predicazione'],r['Testo biblico'],r['Predicatore']].map(normalize).join(' ');
+    const matchQuery=hay.includes(q);
+    const matchYear=!state.yearFilter||r._date.getFullYear().toString()===state.yearFilter;
+    const matchVerse=!state.verseFilter||r['Testo biblico']===state.verseFilter;
+    return matchQuery&&matchYear&&matchVerse;
+  });
+  state.page=1;
+  renderList();
+  updateHash();
  }
  function renderList(){
    const start=(state.page-1)*PAGE_SIZE;
@@ -102,37 +127,39 @@
    <div class="flex justify-center mt-4 space-x-2">${pagButtons.join('')}</div>`;
    main.querySelectorAll('button[data-page]').forEach(btn=>btn.addEventListener('click',e=>{state.page=+e.target.getAttribute('data-page'); renderList(); updateHash();}));
  }
- function renderDetail(id){
-   const r=state.data.find(x=>x.id==id);
-   if(!r){main.innerHTML='<p class="py-10 text-center">Sermone non trovato.</p>'; return;}
-  const img=r['Link immagine']||r['URL immagine']||`https://picsum.photos/seed/${r.id}/800/450`;
-  const videoUrl=r['Link video']||r['URL video'];
-  const audioUrl=r['Link audio']||r['URL audio'];
-  const textUrl=r['Link testo']||r['URL testo'];
-  let media='';
-  if(videoUrl) media+=`<div class="mb-4 aspect-video"><iframe class="w-full h-full" src="${videoUrl.replace('watch?v=','embed/')}" allowfullscreen></iframe></div>`;
-  if(audioUrl) media+=`<audio controls src="${audioUrl}" class="w-full mb-4"></audio>`;
-  const textLink=textUrl?`<a href="${textUrl}" target="_blank" class="inline-block bg-green-600 text-white px-4 py-2 rounded"><i class="fa-solid fa-file-lines mr-2"></i>Leggi il testo</a>`:'';
-   main.innerHTML=`<div class="bg-white shadow rounded overflow-hidden">
-     <img src="${img}" alt="${r['Titolo predicazione']}" class="w-full object-cover max-h-[450px]">
-     <div class="p-4">
-       <h2 class="text-2xl font-bold mb-2">${r['Titolo predicazione']}</h2>
-       <p class="text-gray-600 mb-2"><i class="fa-solid fa-calendar-days mr-1"></i>${r['Data']} · <i class="fa-solid fa-user mr-1"></i>${r['Predicatore']}</p>
-       <p class="mb-4"><i class="fa-solid fa-book mr-1"></i>${r['Testo biblico']}</p>
-       ${media}
-       ${textLink}
-     </div>
-   </div>`;
- }
- function updateHash(){
-   const params=new URLSearchParams();
-   if(state.query) params.set('q',state.query);
-   if(state.page>1) params.set('page',state.page);
-   const qs=params.toString();
-   const base='#/';
-   location.hash=base+(qs?'?'+qs:'');
- }
- function handleHash(){
+  function renderDetail(id){
+    const r=state.data.find(x=>x.id==id);
+    if(!r){main.innerHTML='<p class="py-10 text-center">Sermone non trovato.</p>'; return;}
+    const img=r['Link immagine']||r['URL immagine']||`https://picsum.photos/seed/${r.id}/800/450`;
+    const videoUrl=r['Link video']||r['URL video'];
+    const audioUrl=r['Link audio']||r['URL audio'];
+    const textUrl=r['Link testo']||r['URL testo'];
+    const videoSection=`<details ${videoUrl?'open':''} class="mb-4 border rounded"><summary class="cursor-pointer p-2 font-semibold">Video</summary>${videoUrl?`<div class=\\"mt-2 aspect-video\\"><iframe class=\\"w-full h-full\\" src=\\"${videoUrl.replace('watch?v=','embed/')}\\" allowfullscreen></iframe></div>`:`<p class=\\"p-2 text-gray-500\\">Video non disponibile.</p>`}</details>`;
+    const audioSection=`<details class="mb-4 border rounded"><summary class="cursor-pointer p-2 font-semibold">Audio</summary>${audioUrl?`<div class=\\"p-2\\"><audio controls src=\\"${audioUrl}\\" class=\\"w-full\\"></audio></div>`:`<p class=\\"p-2 text-gray-500\\">Audio non disponibile.</p>`}</details>`;
+    const textSection=`<details class="mb-4 border rounded"><summary class="cursor-pointer p-2 font-semibold">Testo</summary>${textUrl?`<div class=\\"p-2\\"><a href=\\"${textUrl}\\" target=\\"_blank\\" class=\\"inline-block bg-green-600 text-white px-4 py-2 rounded\\"><i class=\\"fa-solid fa-file-lines mr-2\\"></i>Leggi il testo</a></div>`:`<p class=\\"p-2 text-gray-500\\">Testo non disponibile.</p>`}</details>`;
+    main.innerHTML=`<div class="bg-white shadow rounded overflow-hidden">
+      <img src="${img}" alt="${r['Titolo predicazione']}" class="w-full object-cover max-h-[450px]">
+      <div class="p-4">
+        <h2 class="text-2xl font-bold mb-2">${r['Titolo predicazione']}</h2>
+        <p class="text-gray-600 mb-2"><i class="fa-solid fa-calendar-days mr-1"></i>${r['Data']} · <i class="fa-solid fa-user mr-1"></i>${r['Predicatore']}</p>
+        <p class="mb-4"><i class="fa-solid fa-book mr-1"></i>${r['Testo biblico']}</p>
+        ${videoSection}
+        ${audioSection}
+        ${textSection}
+      </div>
+    </div>`;
+  }
+function updateHash(){
+  const params=new URLSearchParams();
+  if(state.query) params.set('q',state.query);
+  if(state.yearFilter) params.set('year',state.yearFilter);
+  if(state.verseFilter) params.set('verse',state.verseFilter);
+  if(state.page>1) params.set('page',state.page);
+  const qs=params.toString();
+  const base='#/';
+  location.hash=base+(qs?'?'+qs:'');
+}
+function handleHash(){
    const hash=location.hash||'#/';
    const [path,qs]=hash.slice(1).split('?');
    if(!state.data.length) return;
@@ -140,24 +167,39 @@
      const id=parseInt(path.split('/')[2],10);
      renderDetail(id);
    }else{
-     const params=new URLSearchParams(qs||'');
-     state.query=params.get('q')||'';
-     state.page=parseInt(params.get('page'),10)||1;
-     searchInput.value=state.query;
-     const q=normalize(state.query);
-     state.filtered=state.data.filter(r=>{
-       const hay=[r['Titolo predicazione'],r['Testo biblico'],r['Predicatore']].map(normalize).join(' ');
-       return hay.includes(q);
-     });
-     if(!state.filtered.length && state.query==='') state.filtered=state.data;
-     renderList();
-   }
- }
- const debounced=(fn,ms)=>{let t;return(...args)=>{clearTimeout(t);t=setTimeout(()=>fn(...args),ms);}};
- searchInput.addEventListener('input',debounced(e=>{state.query=e.target.value;applyFilters();},150));
- window.addEventListener('hashchange',handleHash);
- window.__app={getState:()=>state,setQuery:q=>{searchInput.value=q;state.query=q;applyFilters();},goToPage:p=>{state.page=p;renderList();updateHash();}};
- load();
+    const params=new URLSearchParams(qs||'');
+    state.query=params.get('q')||'';
+    state.page=parseInt(params.get('page'),10)||1;
+    state.yearFilter=params.get('year')||'';
+    state.verseFilter=params.get('verse')||'';
+    searchInput.value=state.query;
+    yearSelect.value=state.yearFilter;
+    verseSelect.value=state.verseFilter;
+    const q=normalize(state.query);
+    state.filtered=state.data.filter(r=>{
+      const hay=[r['Titolo predicazione'],r['Testo biblico'],r['Predicatore']].map(normalize).join(' ');
+      const matchQuery=hay.includes(q);
+      const matchYear=!state.yearFilter||r._date.getFullYear().toString()===state.yearFilter;
+      const matchVerse=!state.verseFilter||r['Testo biblico']===state.verseFilter;
+      return matchQuery&&matchYear&&matchVerse;
+    });
+    if(!state.filtered.length && !state.query && !state.yearFilter && !state.verseFilter) state.filtered=state.data;
+    renderList();
+  }
+}
+const debounced=(fn,ms)=>{let t;return(...args)=>{clearTimeout(t);t=setTimeout(()=>fn(...args),ms);}};
+searchInput.addEventListener('input',debounced(e=>{state.query=e.target.value;applyFilters();},150));
+yearSelect.addEventListener('change',e=>{state.yearFilter=e.target.value;applyFilters();});
+verseSelect.addEventListener('change',e=>{state.verseFilter=e.target.value;applyFilters();});
+window.addEventListener('hashchange',handleHash);
+window.__app={getState:()=>state,setQuery:q=>{searchInput.value=q;state.query=q;applyFilters();},goToPage:p=>{state.page=p;renderList();updateHash();}};
+function populateFilters(){
+  const years=[...new Set(state.data.map(r=>r._date.getFullYear().toString()))].sort((a,b)=>b-a);
+  yearSelect.innerHTML='<option value="">Tutti gli anni</option>'+years.map(y=>`<option value="${y}">${y}</option>`).join('');
+  const verses=[...new Set(state.data.map(r=>r['Testo biblico']).filter(Boolean))].sort();
+  verseSelect.innerHTML='<option value="">Tutti i versetti</option>'+verses.map(v=>`<option value="${v}">${v}</option>`).join('');
+}
+load();
 })();
 </script>
 </body>
