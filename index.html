@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Archivio Sermoni</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://kit.fontawesome.com/a2e0e6cfd6.js" crossorigin="anonymous"></script>
+  <style>body{font-family:'Inter',sans-serif}</style>
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col">
+<header class="bg-white shadow sticky top-0 z-10">
+  <div class="max-w-4xl mx-auto p-4 flex items-center gap-4">
+    <h1 class="text-2xl font-bold flex-1">Archivio Sermoni</h1>
+    <label for="search" class="sr-only">Cerca</label>
+    <input id="search" type="text" placeholder="Cerca..." class="border rounded p-2 w-48 sm:w-64" />
+  </div>
+</header>
+<main id="main" class="flex-1 max-w-4xl mx-auto p-4"></main>
+<footer class="text-center text-sm text-gray-500 p-4">© Archivio Sermoni</footer>
+<script>
+(function(){
+ const state={data:[],filtered:[],page:1,query:''};
+ const PAGE_SIZE=20;
+ const main=document.getElementById('main');
+ const searchInput=document.getElementById('search');
+ function fetchCSV(){return fetch('data/sermoni.csv').then(r=>r.text());}
+ function parseCSV(text){
+   const rows=[]; let field='',row=[],inQuotes=false; let i=0;
+   while(i<text.length){const c=text[i];
+     if(inQuotes){
+       if(c=='"'){if(text[i+1]=='"'){field+='"';i++;}else inQuotes=false;}
+       else field+=c;
+     }else{
+       if(c=='"') inQuotes=true;
+       else if(c==','){row.push(field);field='';}
+       else if(c=='\n'||c=='\r'){if(c=='\r' && text[i+1]=='\n') i++; row.push(field);field=''; if(row.length){rows.push(row);row=[];}}
+       else field+=c;
+     }
+     i++;
+   }
+   if(field!==''||row.length){row.push(field);rows.push(row);}
+   if(!rows.length) return [];
+   const header=rows.shift();
+   const out=[]; rows.forEach(r=>{if(r.length===1 && r[0].trim()==='') return; const obj={}; header.forEach((h,j)=>obj[h]=r[j]||''); out.push(obj);});
+   return out;
+ }
+ function normalize(str){return str.normalize('NFD').replace(/\p{Diacritic}/gu,'').toLowerCase();}
+ function load(){
+   main.innerHTML='<p class="animate-pulse text-center py-10">Caricamento...</p>';
+   fetchCSV().then(t=>{
+     const rows=parseCSV(t);
+     const valid=rows.filter(r=>r['Data']&&r['Titolo predicazione']);
+     valid.forEach((r,i)=>{r.id=i+1; const [d,m,y]=r['Data'].split('/'); r._date=new Date(+y,+m-1,+d);});
+     valid.sort((a,b)=>b._date-a._date);
+     state.data=valid;
+     handleHash();
+   }).catch(e=>{main.innerHTML='<p class="text-red-500">Errore caricamento dati</p>';});
+ }
+ function applyFilters(){
+   const q=normalize(state.query);
+   state.filtered=state.data.filter(r=>{
+     const hay=[r['Titolo predicazione'],r['Testo biblico'],r['Predicatore']].map(normalize).join(' ');
+     return hay.includes(q);
+   });
+   state.page=1;
+   renderList();
+   updateHash();
+ }
+ function renderList(){
+   const start=(state.page-1)*PAGE_SIZE;
+   const pageData=state.filtered.slice(start,start+PAGE_SIZE);
+   if(!pageData.length){main.innerHTML='<p class="py-10 text-center">Nessun sermone trovato.</p>'; return;}
+   const cards=pageData.map(r=>{
+     const tags=[];
+     if(r['URL video']) tags.push('<span class="text-xs bg-red-100 text-red-700 px-2 py-1 rounded">Video</span>');
+     if(r['URL audio']) tags.push('<span class="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded">Audio</span>');
+     if(r['URL testo']) tags.push('<span class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded">Testo</span>');
+     const img=r['URL immagine']||`https://picsum.photos/seed/${r.id}/400/225`;
+     return `<a href="#/sermon/${r.id}" class="bg-white rounded shadow overflow-hidden flex flex-col">
+       <img src="${img}" alt="${r['Titolo predicazione']}" class="w-full h-48 object-cover">
+       <div class="p-4 flex-1 flex flex-col">
+         <h3 class="font-semibold mb-2">${r['Titolo predicazione']}</h3>
+         <p class="text-sm text-gray-500 mb-2">${r['Data']} · ${r['Predicatore']}</p>
+         <div class="mt-auto space-x-1">${tags.join(' ')}</div>
+       </div>
+     </a>`;
+   }).join('');
+   const totalPages=Math.ceil(state.filtered.length/PAGE_SIZE)||1;
+   const pagButtons=[];
+   if(state.page>1) pagButtons.push(`<button data-page="${state.page-1}" aria-label="Pagina precedente" class="px-3 py-1 border rounded">«</button>`);
+   for(let i=1;i<=totalPages;i++){
+     pagButtons.push(`<button data-page="${i}" class="px-3 py-1 border rounded ${i===state.page?'bg-gray-200':''}">${i}</button>`);
+   }
+   if(state.page<totalPages) pagButtons.push(`<button data-page="${state.page+1}" aria-label="Pagina successiva" class="px-3 py-1 border rounded">»</button>`);
+   main.innerHTML=`<div class="grid gap-4 sm:grid-cols-2">${cards}</div>
+   <div class="flex justify-center mt-4 space-x-2">${pagButtons.join('')}</div>`;
+   main.querySelectorAll('button[data-page]').forEach(btn=>btn.addEventListener('click',e=>{state.page=+e.target.getAttribute('data-page'); renderList(); updateHash();}));
+ }
+ function renderDetail(id){
+   const r=state.data.find(x=>x.id==id);
+   if(!r){main.innerHTML='<p class="py-10 text-center">Sermone non trovato.</p>'; return;}
+   const img=r['URL immagine']||`https://picsum.photos/seed/${r.id}/800/450`;
+   let media='';
+   if(r['URL video']) media+=`<div class="mb-4 aspect-video"><iframe class="w-full h-full" src="${r['URL video'].replace('watch?v=','embed/')}" allowfullscreen></iframe></div>`;
+   if(r['URL audio']) media+=`<audio controls src="${r['URL audio']}" class="w-full mb-4"></audio>`;
+   const textLink=r['URL testo']?`<a href="${r['URL testo']}" target="_blank" class="inline-block bg-green-600 text-white px-4 py-2 rounded"><i class="fa-solid fa-file-lines mr-2"></i>Leggi il testo</a>`:'';
+   main.innerHTML=`<div class="bg-white shadow rounded overflow-hidden">
+     <img src="${img}" alt="${r['Titolo predicazione']}" class="w-full object-cover max-h-[450px]">
+     <div class="p-4">
+       <h2 class="text-2xl font-bold mb-2">${r['Titolo predicazione']}</h2>
+       <p class="text-gray-600 mb-2"><i class="fa-solid fa-calendar-days mr-1"></i>${r['Data']} · <i class="fa-solid fa-user mr-1"></i>${r['Predicatore']}</p>
+       <p class="mb-4"><i class="fa-solid fa-book mr-1"></i>${r['Testo biblico']}</p>
+       ${media}
+       ${textLink}
+     </div>
+   </div>`;
+ }
+ function updateHash(){
+   const params=new URLSearchParams();
+   if(state.query) params.set('q',state.query);
+   if(state.page>1) params.set('page',state.page);
+   const qs=params.toString();
+   const base='#/';
+   location.hash=base+(qs?'?'+qs:'');
+ }
+ function handleHash(){
+   const hash=location.hash||'#/';
+   const [path,qs]=hash.slice(1).split('?');
+   if(!state.data.length) return;
+   if(path.startsWith('/sermon/')){
+     const id=parseInt(path.split('/')[2],10);
+     renderDetail(id);
+   }else{
+     const params=new URLSearchParams(qs||'');
+     state.query=params.get('q')||'';
+     state.page=parseInt(params.get('page'),10)||1;
+     searchInput.value=state.query;
+     const q=normalize(state.query);
+     state.filtered=state.data.filter(r=>{
+       const hay=[r['Titolo predicazione'],r['Testo biblico'],r['Predicatore']].map(normalize).join(' ');
+       return hay.includes(q);
+     });
+     if(!state.filtered.length && state.query==='') state.filtered=state.data;
+     renderList();
+   }
+ }
+ const debounced=(fn,ms)=>{let t;return(...args)=>{clearTimeout(t);t=setTimeout(()=>fn(...args),ms);}};
+ searchInput.addEventListener('input',debounced(e=>{state.query=e.target.value;applyFilters();},150));
+ window.addEventListener('hashchange',handleHash);
+ window.__app={getState:()=>state,setQuery:q=>{searchInput.value=q;state.query=q;applyFilters();},goToPage:p=>{state.page=p;renderList();updateHash();}};
+ load();
+})();
+</script>
+</body>
+</html>
