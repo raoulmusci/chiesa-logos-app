@@ -111,15 +111,18 @@ function renderList(){
     if(audioUrl) tags.push('<span class="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded">Audio</span>');
     if(textUrl) tags.push('<span class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded">Testo</span>');
     const img=r['Link immagine']||r['URL immagine']||`https://picsum.photos/seed/${r.id}/400/225`;
-     return `<a href="#/sermon/${r.id}" class="bg-white rounded shadow overflow-hidden flex flex-col">
-       <img src="${img}" alt="${r['Titolo predicazione']}" class="w-full h-48 object-cover">
-       <div class="p-4 flex-1 flex flex-col">
-         <h3 class="font-semibold mb-2">${r['Titolo predicazione']}</h3>
-         <p class="text-sm text-gray-500">${r['Data']} · ${r['Predicatore']}</p>
-         <p class="text-sm text-gray-700 mb-2">${r['Testo biblico']}</p>
-         <div class="mt-auto space-x-1">${tags.join(' ')}</div>
-       </div>
-     </a>`;
+    // MODIFICA: aggiungo lazy loading e shimmer placeholder
+    return `<a href="#/sermon/${r.id}" class="bg-white rounded shadow overflow-hidden flex flex-col">
+      <div class="relative w-full h-48 bg-gray-200 animate-pulse">
+        <img src="${img}" alt="${r['Titolo predicazione']}" class="w-full h-48 object-cover transition-opacity duration-300 opacity-0" loading="lazy" onload="this.style.opacity=1;this.parentNode.classList.remove('animate-pulse','bg-gray-200')">
+      </div>
+      <div class="p-4 flex-1 flex flex-col">
+        <h3 class="font-semibold mb-2">${r['Titolo predicazione']}</h3>
+        <p class="text-sm text-gray-500">${r['Data']} · ${r['Predicatore']}</p>
+        <p class="text-sm text-gray-700 mb-2">${r['Testo biblico']}</p>
+        <div class="mt-auto space-x-1">${tags.join(' ')}</div>
+      </div>
+    </a>`;
   }).join('');
    const totalPages=Math.ceil(state.filtered.length/PAGE_SIZE)||1;
    const pagButtons=[];
@@ -164,10 +167,13 @@ async function renderDetail(id){
     videoContent = `<p class="p-2 text-gray-500">Video non disponibile.</p>`;
   }
   const videoSection = `<details ${videoUrl?'open':''} class="mb-4 border rounded"><summary class="cursor-pointer p-2 font-semibold">Video</summary>${videoContent}</details>`;
-  const audioSection = `<details class="mb-4 border rounded"><summary class="cursor-pointer p-2 font-semibold">Audio</summary>${audioUrl ? `<div class="p-2"><audio controls src="${audioUrl}" class="w-full"></audio></div>` : `<p class="p-2 text-gray-500">Audio non disponibile.</p>`}</details>`;
-  const textSection = `<details class="mb-4 border rounded"><summary class="cursor-pointer p-2 font-semibold">Testo</summary>${textUrl ? `<div class="p-2"><a href="${textUrl}" target="_blank" class="inline-block underline text-blue-600">Scarica/Testo</a></div>` : `<p class="p-2 text-gray-500">Testo non disponibile.</p>`}</details>`;
+  const audioSection = `<details class="mb-4 border rounded"><summary class="cursor-pointer p-2 font-semibold">Audio</summary>${audioUrl ? `<div class="p-2"><audio controls src="${audioUrl}" class="w-[...]
+  const textSection = `<details class="mb-4 border rounded"><summary class="cursor-pointer p-2 font-semibold">Testo</summary>${textUrl ? `<div class="p-2"><a href="${textUrl}" target="_blank" class="i[...]
+  // MODIFICA: aggiungo lazy loading e shimmer anche per l'immagine dettaglio
   main.innerHTML = `<div class="bg-white shadow rounded overflow-hidden">
-    <img src="${img}" alt="${r['Titolo predicazione']}" class="w-full object-cover max-h-[450px]">
+    <div class="relative w-full max-h-[450px] bg-gray-200 animate-pulse">
+      <img src="${img}" alt="${r['Titolo predicazione']}" class="w-full object-cover max-h-[450px] transition-opacity duration-300 opacity-0" loading="lazy" onload="this.style.opacity=1;this.parentNode.classList.remove('animate-pulse','bg-gray-200')">
+    </div>
     <div class="p-4">
       <h2 class="text-2xl font-bold mb-2">${r['Titolo predicazione']}</h2>
       <p class="text-gray-600 mb-2"><i class="fa-solid fa-calendar-days mr-1"></i>${r['Data']} · <i class="fa-solid fa-user mr-1"></i>${r['Predicatore']}</p>
