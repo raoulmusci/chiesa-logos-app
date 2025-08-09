@@ -153,16 +153,16 @@ async function renderDetail(id){
     let videoContent;
     if(videoUrl){
       if(/youtube\.com|youtu\.be/.test(videoUrl)){
-        videoContent=`<div class=\\"mt-2 aspect-video\\"><iframe class=\\"w-full h-full\\" src=\\"${videoUrl.replace('watch?v=','embed/')}\\" allowfullscreen></iframe></div>`;
+        videoContent=`<div class="mt-2 aspect-video"><iframe class="w-full h-full" src="${videoUrl.replace('watch?v=','embed/')}" allowfullscreen></iframe></div>`;
       }else{
-        videoContent=`<div class=\\"mt-2\\"><video controls src=\\"${videoUrl}\\" class=\\"w-full\\"></video></div>`;
+        videoContent=`<div class="mt-2"><video controls src="${videoUrl}" class="w-full"></video></div>`;
       }
     }else{
-      videoContent=`<p class=\\"p-2 text-gray-500\\">Video non disponibile.</p>`;
+      videoContent=`<p class="p-2 text-gray-500">Video non disponibile.</p>`;
     }
     const videoSection=`<details ${videoUrl?'open':''} class="mb-4 border rounded"><summary class="cursor-pointer p-2 font-semibold">Video</summary>${videoContent}</details>`;
-    const audioSection=`<details class="mb-4 border rounded"><summary class="cursor-pointer p-2 font-semibold">Audio</summary>${audioUrl?`<div class=\\"p-2\\"><audio controls src=\\"${audioUrl}\\" class=\\"w-full\\"></audio></div>`:`<p class=\\"p-2 text-gray-500\\">Audio non disponibile.</p>`}</details>`;
-    const textSection=`<details class="mb-4 border rounded"><summary class="cursor-pointer p-2 font-semibold">Testo</summary>${textUrl?`<div class=\\"p-2\\"><a href=\\"${textUrl}\\" target=\\"_blank\\" class=\\"inline-block bg-green-600 text-white px-4 py-2 rounded\\"><i class=\\"fa-solid fa-file-lines mr-2\\"></i>Leggi il testo</a></div>`:`<p class=\\"p-2 text-gray-500\\">Testo non disponibile.</p>`}</details>`;
+    const audioSection=`<details class="mb-4 border rounded"><summary class="cursor-pointer p-2 font-semibold">Audio</summary>${audioUrl?`<div class="p-2"><audio controls src="${audioUrl}" class="w-full"></audio></div>`:`<p class="p-2 text-gray-500">Audio non disponibile.</p>`}</details>`;
+    const textSection=`<details class="mb-4 border rounded"><summary class="cursor-pointer p-2 font-semibold">Testo</summary>${textUrl?`<div class="p-2"><a href="${textUrl}" target="_blank" class="inline-block bg-green-600 text-white px-4 py-2 rounded"><i class="fa-solid fa-file-lines mr-2"></i>Leggi il testo</a></div>`:`<p class="p-2 text-gray-500">Testo non disponibile.</p>`}</details>`;
     main.innerHTML=`<div class="bg-white shadow rounded overflow-hidden">
       <img src="${img}" alt="${r['Titolo predicazione']}" class="w-full object-cover max-h-[450px]">
       <div class="p-4">
