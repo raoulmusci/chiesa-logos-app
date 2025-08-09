@@ -143,38 +143,42 @@ async function checkResource(url){
 }
 
 async function renderDetail(id){
-    const r=state.data.find(x=>x.id==id);
-    if(!r){main.innerHTML='<p class="py-10 text-center">Sermone non trovato.</p>'; return;}
-    main.innerHTML='<p class="py-10 text-center">Caricamento...</p>';
-    const img=r['Link immagine']||r['URL immagine']||`https://picsum.photos/seed/${r.id}/800/450`;
-    const videoUrl=await checkResource(r['Link video']||r['URL video']);
-    const audioUrl=await checkResource(r['Link audio']||r['URL audio']);
-    const textUrl=await checkResource(r['Link testo']||r['URL testo']);
-    let videoContent;
-    if(videoUrl){
-      if(/youtube\.com|youtu\.be/.test(videoUrl)){
-        videoContent=`<div class="mt-2 aspect-video"><iframe class="w-full h-full" src="${videoUrl.replace('watch?v=','embed/')}" allowfullscreen></iframe></div>`;
-      }else{
-        videoContent=`<div class="mt-2"><video controls src="${videoUrl}" class="w-full"></video></div>`;
-      }
-    }else{
-      videoContent=`<p class="p-2 text-gray-500">Video non disponibile.</p>`;
-    }
-    const videoSection=`<details ${videoUrl?'open':''} class="mb-4 border rounded"><summary class="cursor-pointer p-2 font-semibold">Video</summary>${videoContent}</details>`;
-    const audioSection=`<details class="mb-4 border rounded"><summary class="cursor-pointer p-2 font-semibold">Audio</summary>${audioUrl?`<div class="p-2"><audio controls src="${audioUrl}" class="w-full"></audio></div>`:`<p class="p-2 text-gray-500">Audio non disponibile.</p>`}</details>`;
-    const textSection=`<details class="mb-4 border rounded"><summary class="cursor-pointer p-2 font-semibold">Testo</summary>${textUrl?`<div class="p-2"><a href="${textUrl}" target="_blank" class="inline-block bg-green-600 text-white px-4 py-2 rounded"><i class="fa-solid fa-file-lines mr-2"></i>Leggi il testo</a></div>`:`<p class="p-2 text-gray-500">Testo non disponibile.</p>`}</details>`;
-    main.innerHTML=`<div class="bg-white shadow rounded overflow-hidden">
-      <img src="${img}" alt="${r['Titolo predicazione']}" class="w-full object-cover max-h-[450px]">
-      <div class="p-4">
-        <h2 class="text-2xl font-bold mb-2">${r['Titolo predicazione']}</h2>
-        <p class="text-gray-600 mb-2"><i class="fa-solid fa-calendar-days mr-1"></i>${r['Data']} · <i class="fa-solid fa-user mr-1"></i>${r['Predicatore']}</p>
-        <p class="mb-4"><i class="fa-solid fa-book mr-1"></i>${r['Testo biblico']}</p>
-        ${videoSection}
-        ${audioSection}
-        ${textSection}
-      </div>
-    </div>`;
+  const r = state.data.find(x => x.id == id);
+  if(!r){
+    main.innerHTML = '<p class="py-10 text-center">Sermone non trovato.</p>';
+    return;
   }
+  main.innerHTML = '<p class="py-10 text-center">Caricamento...</p>';
+  const img = r['Link immagine'] || r['URL immagine'] || `https://picsum.photos/seed/${r.id}/800/450`;
+  const videoUrl = r['Link video'] || r['URL video'] || '';
+  const audioUrl = r['Link audio'] || r['URL audio'] || '';
+  const textUrl = r['Link testo'] || r['URL testo'] || '';
+  let videoContent;
+  if(videoUrl){
+    if(/youtube\.com|youtu\.be/.test(videoUrl)){
+      videoContent = `<div class="mt-2 aspect-video"><iframe class="w-full h-full" src="${videoUrl.replace('watch?v=','embed/')}" allowfullscreen></iframe></div>`;
+    }else{
+      videoContent = `<div class="mt-2"><video controls src="${videoUrl}" class="w-full"></video></div>`;
+    }
+  }else{
+    videoContent = `<p class="p-2 text-gray-500">Video non disponibile.</p>`;
+  }
+  const videoSection = `<details ${videoUrl?'open':''} class="mb-4 border rounded"><summary class="cursor-pointer p-2 font-semibold">Video</summary>${videoContent}</details>`;
+  const audioSection = `<details class="mb-4 border rounded"><summary class="cursor-pointer p-2 font-semibold">Audio</summary>${audioUrl ? `<div class="p-2"><audio controls src="${audioUrl}" class="w-full"></audio></div>` : `<p class="p-2 text-gray-500">Audio non disponibile.</p>`}</details>`;
+  const textSection = `<details class="mb-4 border rounded"><summary class="cursor-pointer p-2 font-semibold">Testo</summary>${textUrl ? `<div class="p-2"><a href="${textUrl}" target="_blank" class="inline-block underline text-blue-600">Scarica/Testo</a></div>` : `<p class="p-2 text-gray-500">Testo non disponibile.</p>`}</details>`;
+  main.innerHTML = `<div class="bg-white shadow rounded overflow-hidden">
+    <img src="${img}" alt="${r['Titolo predicazione']}" class="w-full object-cover max-h-[450px]">
+    <div class="p-4">
+      <h2 class="text-2xl font-bold mb-2">${r['Titolo predicazione']}</h2>
+      <p class="text-gray-600 mb-2"><i class="fa-solid fa-calendar-days mr-1"></i>${r['Data']} · <i class="fa-solid fa-user mr-1"></i>${r['Predicatore']}</p>
+      <p class="mb-4"><i class="fa-solid fa-book mr-1"></i>${r['Testo biblico']}</p>
+      ${videoSection}
+      ${audioSection}
+      ${textSection}
+    </div>
+  </div>`;
+}
+  
 function updateHash(){
   const params=new URLSearchParams();
   if(state.query) params.set('q',state.query);
