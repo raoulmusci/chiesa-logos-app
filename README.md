@@ -1,6 +1,7 @@
 # Archivio Sermoni
 
 Applicazione web statica per consultare e cercare sermoni senza backend.
+È possibile filtrare i risultati per versetto, anno e mese.
 
 ## Avvio rapido
 
