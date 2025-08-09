@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Archivio Sermoni</title>
+  <title>Chiesa Logos</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
@@ -11,27 +11,47 @@
   <style>body{font-family:'Inter',sans-serif}</style>
 </head>
 <body class="bg-gray-50 min-h-screen flex flex-col">
+
+<!-- HEADER -->
 <header class="bg-white shadow sticky top-0 z-10">
-  <div class="max-w-6xl mx-auto p-4 flex flex-wrap items-center gap-4">
-    <a href="#/" class="text-2xl font-bold w-full sm:flex-1">Archivio Sermoni</a>
-    <label for="search" class="sr-only">Cerca</label>
-    <input id="search" type="text" placeholder="Cerca..." class="border rounded p-2 w-full sm:w-48 md:w-64" />
-    <label for="filter-verse" class="sr-only">Versetto</label>
-    <select id="filter-verse" class="border rounded p-2 w-full sm:w-auto">
-      <option value="">Tutti i versetti</option>
-    </select>
-    <label for="filter-year" class="sr-only">Anno</label>
-    <select id="filter-year" class="border rounded p-2 w-full sm:w-auto">
-      <option value="">Tutti gli anni</option>
-    </select>
-    <label for="filter-month" class="sr-only">Mese</label>
-    <select id="filter-month" class="border rounded p-2 w-full sm:w-auto">
-      <option value="">Tutti i mesi</option>
-    </select>
+  <div class="max-w-6xl mx-auto p-4 space-y-3">
+    <!-- Riga 1: SOLO titolo -->
+    <div>
+      <a href="#/" class="text-2xl font-bold block">Chiesa Logos</a>
+    </div>
+
+    <!-- Riga 2: ricerca + filtri -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+      <div>
+        <label for="search" class="sr-only">Cerca</label>
+        <input id="search" type="text" placeholder="Cerca..." class="border rounded p-2 w-full" />
+      </div>
+      <div>
+        <label for="filter-verse" class="sr-only">Versetto</label>
+        <select id="filter-verse" class="border rounded p-2 w-full">
+          <option value="">Tutti i versetti</option>
+        </select>
+      </div>
+      <div>
+        <label for="filter-year" class="sr-only">Anno</label>
+        <select id="filter-year" class="border rounded p-2 w-full">
+          <option value="">Tutti gli anni</option>
+        </select>
+      </div>
+      <div>
+        <label for="filter-month" class="sr-only">Mese</label>
+        <select id="filter-month" class="border rounded p-2 w-full">
+          <option value="">Tutti i mesi</option>
+        </select>
+      </div>
+    </div>
   </div>
 </header>
+
 <main id="main" class="flex-1 max-w-6xl mx-auto p-4"></main>
-<footer class="text-center text-sm text-gray-500 p-4">© Archivio Sermoni</footer>
+
+<footer class="text-center text-sm text-gray-500 p-4">© Chiesa Logos</footer>
+
 <script>
 (function(){
  const state={data:[],filtered:[],page:1,query:'',yearFilter:'',monthFilter:'',verseFilter:''};
@@ -41,9 +61,11 @@
  const yearSelect=document.getElementById('filter-year');
  const monthSelect=document.getElementById('filter-month');
  const verseSelect=document.getElementById('filter-verse');
+
  function fetchCSV() {
   return fetch('data/sermoni.csv').then(r => r.text()); // usa UTF-8 di default
  }
+
  function parseCSV(text){
    const rows=[]; let field='',row=[],inQuotes=false; let i=0;
    while(i<text.length){const c=text[i];
@@ -64,8 +86,10 @@
    const out=[]; rows.forEach(r=>{if(r.length===1 && r[0].trim()==='') return; const obj={}; header.forEach((h,j)=>obj[h]=r[j]||''); out.push(obj);});
    return out;
  }
+
  function normalize(str){return str.normalize('NFD').replace(/\p{Diacritic}/gu,'').toLowerCase();}
-function load(){
+
+ function load(){
   main.innerHTML='<p class="animate-pulse text-center py-10">Caricamento...</p>';
   fetchCSV().then(t=>{
     const rows=parseCSV(t);
@@ -87,8 +111,9 @@ function load(){
     populateFilters();
     handleHash();
   }).catch(e=>{main.innerHTML='<p class="text-red-500">Errore caricamento dati</p>';});
-}
-function applyFilters(){
+ }
+
+ function applyFilters(){
   const q=normalize(state.query);
   state.filtered=state.data.filter(r=>{
     const hay=[r['Titolo predicazione'],r['Testo biblico'],r['Predicatore']].map(normalize).join(' ');
@@ -102,7 +127,8 @@ function applyFilters(){
   renderList();
   updateHash();
  }
-function renderList(){
+
+ function renderList(){
    const start=(state.page-1)*PAGE_SIZE;
    const pageData=state.filtered.slice(start,start+PAGE_SIZE);
    if(!pageData.length){main.innerHTML='<p class="py-10 text-center">Nessun sermone trovato.</p>'; return;}
@@ -134,9 +160,10 @@ function renderList(){
    if(state.page<totalPages) pagButtons.push(`<button data-page="${state.page+1}" aria-label="Pagina successiva" class="px-3 py-1 border rounded">»</button>`);
    main.innerHTML=`<div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">${cards}</div>
    <div class="flex justify-center mt-4 space-x-2">${pagButtons.join('')}</div>`;
-  main.querySelectorAll('button[data-page]').forEach(btn=>btn.addEventListener('click',e=>{state.page=+e.target.getAttribute('data-page'); renderList(); updateHash();}));
-}
-async function checkResource(url){
+   main.querySelectorAll('button[data-page]').forEach(btn=>btn.addEventListener('click',e=>{state.page=+e.target.getAttribute('data-page'); renderList(); updateHash();}));
+ }
+
+ async function checkResource(url){
   if(!url) return '';
   try{
     const res=await fetch(url,{method:'HEAD'});
@@ -144,9 +171,9 @@ async function checkResource(url){
   }catch(e){
     return '';
   }
-}
+ }
 
-async function renderDetail(id){
+ async function renderDetail(id){
   const r = state.data.find(x => x.id == id);
   if(!r){
     main.innerHTML = '<p class="py-10 text-center">Sermone non trovato.</p>';
@@ -181,9 +208,9 @@ async function renderDetail(id){
       ${textSection}
     </div>
   </div>`;
-}
-  
-function updateHash(){
+ }
+
+ function updateHash(){
   const params=new URLSearchParams();
   if(state.query) params.set('q',state.query);
   if(state.yearFilter) params.set('year',state.yearFilter);
@@ -193,8 +220,9 @@ function updateHash(){
   const qs=params.toString();
   const base='#/';
   location.hash=base+(qs?'?'+qs:'');
-}
-function handleHash(){
+ }
+
+ function handleHash(){
    const hash=location.hash||'#/';
    const [path,qs]=hash.slice(1).split('?');
    if(!state.data.length) return;
@@ -224,15 +252,17 @@ function handleHash(){
     if(!state.filtered.length && !state.query && !state.yearFilter && !state.monthFilter && !state.verseFilter) state.filtered=state.data;
     renderList();
   }
-}
-const debounced=(fn,ms)=>{let t;return(...args)=>{clearTimeout(t);t=setTimeout(()=>fn(...args),ms);}};
-searchInput.addEventListener('input',debounced(e=>{state.query=e.target.value;applyFilters();},150));
-yearSelect.addEventListener('change',e=>{state.yearFilter=e.target.value;applyFilters();});
-monthSelect.addEventListener('change',e=>{state.monthFilter=e.target.value;applyFilters();});
-verseSelect.addEventListener('change',e=>{state.verseFilter=e.target.value;applyFilters();});
-window.addEventListener('hashchange',handleHash);
-window.__app={getState:()=>state,setQuery:q=>{searchInput.value=q;state.query=q;applyFilters();},goToPage:p=>{state.page=p;renderList();updateHash();}};
-function populateFilters(){
+ }
+
+ const debounced=(fn,ms)=>{let t;return(...args)=>{clearTimeout(t);t=setTimeout(()=>fn(...args),ms);}};
+ searchInput.addEventListener('input',debounced(e=>{state.query=e.target.value;applyFilters();},150));
+ yearSelect.addEventListener('change',e=>{state.yearFilter=e.target.value;applyFilters();});
+ monthSelect.addEventListener('change',e=>{state.monthFilter=e.target.value;applyFilters();});
+ verseSelect.addEventListener('change',e=>{state.verseFilter=e.target.value;applyFilters();});
+ window.addEventListener('hashchange',handleHash);
+ window.__app={getState:()=>state,setQuery:q=>{searchInput.value=q;state.query=q;applyFilters();},goToPage:p=>{state.page=p;renderList();updateHash();}};
+
+ function populateFilters(){
   const years=[...new Set(state.data.map(r=>r._date.getFullYear().toString()))].sort((a,b)=>b-a);
   yearSelect.innerHTML='<option value="">Tutti gli anni</option>'+years.map(y=>`<option value="${y}">${y}</option>`).join('');
   const monthNames=['Gennaio','Febbraio','Marzo','Aprile','Maggio','Giugno','Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre'];
@@ -240,8 +270,9 @@ function populateFilters(){
   monthSelect.innerHTML='<option value="">Tutti i mesi</option>'+months.map(m=>`<option value="${m}">${monthNames[m-1]}</option>`).join('');
   const verses=[...new Set(state.data.map(r=>r['Testo biblico']).filter(Boolean))].sort();
   verseSelect.innerHTML='<option value="">Tutti i versetti</option>'+verses.map(v=>`<option value="${v}">${v}</option>`).join('');
-}
-load();
+ }
+
+ load();
 })();
 </script>
 </body>
