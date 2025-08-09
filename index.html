@@ -36,10 +36,8 @@
  const searchInput=document.getElementById('search');
  const yearSelect=document.getElementById('filter-year');
  const verseSelect=document.getElementById('filter-verse');
- function fetchCSV(){
-   return fetch('data/sermoni.csv')
-     .then(r=>r.arrayBuffer())
-     .then(b=>new TextDecoder('windows-1252').decode(b));
+ function fetchCSV() {
+  return fetch('data/sermoni.csv').then(r => r.text()); // usa UTF-8 di default
  }
  function parseCSV(text){
    const rows=[]; let field='',row=[],inQuotes=false; let i=0;
