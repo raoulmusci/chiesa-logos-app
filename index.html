@@ -12,21 +12,21 @@
 </head>
 <body class="bg-gray-50 min-h-screen flex flex-col">
 <header class="bg-white shadow sticky top-0 z-10">
-  <div class="max-w-4xl mx-auto p-4 flex items-center gap-4">
-    <a href="#/" class="text-2xl font-bold flex-1">Archivio Sermoni</a>
+  <div class="max-w-6xl mx-auto p-4 flex flex-wrap items-center gap-4">
+    <a href="#/" class="text-2xl font-bold w-full sm:flex-1">Archivio Sermoni</a>
     <label for="search" class="sr-only">Cerca</label>
-    <input id="search" type="text" placeholder="Cerca..." class="border rounded p-2 w-48 sm:w-64" />
+    <input id="search" type="text" placeholder="Cerca..." class="border rounded p-2 w-full sm:w-48 md:w-64" />
     <label for="filter-verse" class="sr-only">Versetto</label>
-    <select id="filter-verse" class="border rounded p-2">
+    <select id="filter-verse" class="border rounded p-2 w-full sm:w-auto">
       <option value="">Tutti i versetti</option>
     </select>
     <label for="filter-year" class="sr-only">Anno</label>
-    <select id="filter-year" class="border rounded p-2">
+    <select id="filter-year" class="border rounded p-2 w-full sm:w-auto">
       <option value="">Tutti gli anni</option>
     </select>
   </div>
 </header>
-<main id="main" class="flex-1 max-w-4xl mx-auto p-4"></main>
+<main id="main" class="flex-1 max-w-6xl mx-auto p-4"></main>
 <footer class="text-center text-sm text-gray-500 p-4">© Archivio Sermoni</footer>
 <script>
 (function(){
@@ -126,7 +126,7 @@ function renderList(){
      pagButtons.push(`<button data-page="${i}" class="px-3 py-1 border rounded ${i===state.page?'bg-gray-200':''}">${i}</button>`);
    }
    if(state.page<totalPages) pagButtons.push(`<button data-page="${state.page+1}" aria-label="Pagina successiva" class="px-3 py-1 border rounded">»</button>`);
-   main.innerHTML=`<div class="grid gap-4 sm:grid-cols-2">${cards}</div>
+   main.innerHTML=`<div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">${cards}</div>
    <div class="flex justify-center mt-4 space-x-2">${pagButtons.join('')}</div>`;
   main.querySelectorAll('button[data-page]').forEach(btn=>btn.addEventListener('click',e=>{state.page=+e.target.getAttribute('data-page'); renderList(); updateHash();}));
 }
