@@ -1,46 +1,121 @@
-Data,Titolo predicazione,Testo biblico,Predicatore,URL video,URL audio,URL testo,URL immagine
-02/02/2022,La Grazia che Salva #1,Salmo 23,Giovanni Bianchi,,,,
-03/03/2023,Camminare nella Luce #2,Romani 8:28,Luca Verdi,https://www.youtube.com/watch?v=dQw4w9WgXcQ,,,
-04/04/2024,La Forza della Fede #3,Matteo 5:1-12,Paolo Neri,,https://filesamples.com/samples/audio/mp3/sample3.mp3,,
-05/05/2025,Rinnovamento dello Spirito #4,Atti 2:1-4,Anna Gialli,https://www.youtube.com/watch?v=dQw4w9WgXcQ,,,https://picsum.photos/seed/4/800/450
-06/06/2021,Il Potere della Preghiera #5,Genesi 1:1-5,Sara Blu,,,https://example.com/note-5,
-07/07/2022,Vivere nella Verità #6,Ebrei 11:1,Francesco Viola,https://www.youtube.com/watch?v=dQw4w9WgXcQ,https://filesamples.com/samples/audio/mp3/sample3.mp3,,
-08/08/2023,Amore senza Confini #7,Filippesi 4:13,Elena Marrone,,,,
-09/09/2024,La Via della Pace #8,1 Corinzi 13,Marco Rossi,https://www.youtube.com/watch?v=dQw4w9WgXcQ,,,https://picsum.photos/seed/8/800/450
-10/10/2025,La Gioia della Salvezza #9,Apocalisse 21:1-4,Giovanni Bianchi,,https://filesamples.com/samples/audio/mp3/sample3.mp3,,
-11/11/2021,La Speranza in Cristo #10,Giovanni 3:16,Luca Verdi,https://www.youtube.com/watch?v=dQw4w9WgXcQ,,https://example.com/note-10,
-12/12/2022,La Grazia che Salva #11,Salmo 23,Paolo Neri,,,,
-13/01/2023,Camminare nella Luce #12,Romani 8:28,Anna Gialli,https://www.youtube.com/watch?v=dQw4w9WgXcQ,https://filesamples.com/samples/audio/mp3/sample3.mp3,,https://picsum.photos/seed/12/800/450
-14/02/2024,La Forza della Fede #13,Matteo 5:1-12,Sara Blu,,,,
-15/03/2025,Rinnovamento dello Spirito #14,Atti 2:1-4,Francesco Viola,https://www.youtube.com/watch?v=dQw4w9WgXcQ,,,
-16/04/2021,Il Potere della Preghiera #15,Genesi 1:1-5,Elena Marrone,,https://filesamples.com/samples/audio/mp3/sample3.mp3,https://example.com/note-15,
-17/05/2022,Vivere nella Verità #16,Ebrei 11:1,Marco Rossi,https://www.youtube.com/watch?v=dQw4w9WgXcQ,,,https://picsum.photos/seed/16/800/450
-18/06/2023,Amore senza Confini #17,Filippesi 4:13,Giovanni Bianchi,,,,
-19/07/2024,La Via della Pace #18,1 Corinzi 13,Luca Verdi,https://www.youtube.com/watch?v=dQw4w9WgXcQ,https://filesamples.com/samples/audio/mp3/sample3.mp3,,
-20/08/2025,La Gioia della Salvezza #19,Apocalisse 21:1-4,Paolo Neri,,,,
-21/09/2021,La Speranza in Cristo #20,Giovanni 3:16,Anna Gialli,https://www.youtube.com/watch?v=dQw4w9WgXcQ,,https://example.com/note-20,https://picsum.photos/seed/20/800/450
-22/10/2022,La Grazia che Salva #21,Salmo 23,Sara Blu,,https://filesamples.com/samples/audio/mp3/sample3.mp3,,
-23/11/2023,Camminare nella Luce #22,Romani 8:28,Francesco Viola,https://www.youtube.com/watch?v=dQw4w9WgXcQ,,,
-24/12/2024,La Forza della Fede #23,Matteo 5:1-12,Elena Marrone,,,,
-25/01/2025,Rinnovamento dello Spirito #24,Atti 2:1-4,Marco Rossi,https://www.youtube.com/watch?v=dQw4w9WgXcQ,https://filesamples.com/samples/audio/mp3/sample3.mp3,,https://picsum.photos/seed/24/800/450
-26/02/2021,Il Potere della Preghiera #25,Genesi 1:1-5,Giovanni Bianchi,,,https://example.com/note-25,
-27/03/2022,Vivere nella Verità #26,Ebrei 11:1,Luca Verdi,https://www.youtube.com/watch?v=dQw4w9WgXcQ,,,
-28/04/2023,Amore senza Confini #27,Filippesi 4:13,Paolo Neri,,https://filesamples.com/samples/audio/mp3/sample3.mp3,,
-01/05/2024,La Via della Pace #28,1 Corinzi 13,Anna Gialli,https://www.youtube.com/watch?v=dQw4w9WgXcQ,,,https://picsum.photos/seed/28/800/450
-02/06/2025,La Gioia della Salvezza #29,Apocalisse 21:1-4,Sara Blu,,,,
-03/07/2021,La Speranza in Cristo #30,Giovanni 3:16,Francesco Viola,https://www.youtube.com/watch?v=dQw4w9WgXcQ,https://filesamples.com/samples/audio/mp3/sample3.mp3,https://example.com/note-30,
-04/08/2022,La Grazia che Salva #31,Salmo 23,Elena Marrone,,,,
-05/09/2023,Camminare nella Luce #32,Romani 8:28,Marco Rossi,https://www.youtube.com/watch?v=dQw4w9WgXcQ,,,https://picsum.photos/seed/32/800/450
-06/10/2024,La Forza della Fede #33,Matteo 5:1-12,Giovanni Bianchi,,https://filesamples.com/samples/audio/mp3/sample3.mp3,,
-07/11/2025,Rinnovamento dello Spirito #34,Atti 2:1-4,Luca Verdi,https://www.youtube.com/watch?v=dQw4w9WgXcQ,,,
-08/12/2021,Il Potere della Preghiera #35,Genesi 1:1-5,Paolo Neri,,,https://example.com/note-35,
-09/01/2022,Vivere nella Verità #36,Ebrei 11:1,Anna Gialli,https://www.youtube.com/watch?v=dQw4w9WgXcQ,https://filesamples.com/samples/audio/mp3/sample3.mp3,,https://picsum.photos/seed/36/800/450
-10/02/2023,Amore senza Confini #37,Filippesi 4:13,Sara Blu,,,,
-11/03/2024,La Via della Pace #38,1 Corinzi 13,Francesco Viola,https://www.youtube.com/watch?v=dQw4w9WgXcQ,,,
-12/04/2025,La Gioia della Salvezza #39,Apocalisse 21:1-4,Elena Marrone,,https://filesamples.com/samples/audio/mp3/sample3.mp3,,
-13/05/2021,La Speranza in Cristo #40,Giovanni 3:16,Marco Rossi,https://www.youtube.com/watch?v=dQw4w9WgXcQ,,https://example.com/note-40,https://picsum.photos/seed/40/800/450
-14/06/2022,La Grazia che Salva #41,Salmo 23,Giovanni Bianchi,,,,
-15/07/2023,Camminare nella Luce #42,Romani 8:28,Luca Verdi,https://www.youtube.com/watch?v=dQw4w9WgXcQ,https://filesamples.com/samples/audio/mp3/sample3.mp3,,
-16/08/2024,La Forza della Fede #43,Matteo 5:1-12,Paolo Neri,,,,
-17/09/2025,Rinnovamento dello Spirito #44,Atti 2:1-4,Anna Gialli,https://www.youtube.com/watch?v=dQw4w9WgXcQ,,,https://picsum.photos/seed/44/800/450
-18/10/2021,Il Potere della Preghiera #45,Genesi 1:1-5,Sara Blu,,https://filesamples.com/samples/audio/mp3/sample3.mp3,https://example.com/note-45,
+Data,Link video,Link audio,Link testo,Link immagine,Titolo predicazione,Testo biblico,Predicatore,Link			
+2025-01-05,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/05.01.2025.mp4,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/05.01.2025audio.m4a,,,,Giobbe 42:1-6,Samuele,			
+2025-01-12,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/12.01.2025.mp4,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/12.01.2025audio.m4a,,,Il Vangelo potenza di Dio,Romani 1:16-17 ,Fabio,			
+2025-01-19,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/19.01.2025.mp4,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/19.01.2025.audio.m4a,,,,Isaia 6:1-13,Marchino Martella,			
+2025-01-26,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/26.01.2025.mp4,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/26.01.2025audio.m4a,,,,Romani 1:18-19,Samuele,			
+2025-02-02,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/02.02.2025.mp4,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/02.02.2025audio.m4a,,,,Romani 1:20-23,Samuele,			
+2025-02-09,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/09.02.2025.mp4,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/09.02.2025audio.m4a,,,Abbandonati da Dio,Romani 1:24-32,Fabio,			
+2025-02-16,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/16.02.2025.mp4,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/16.02.2025audio.m4a,,,Teologia della sofferenza,,Cristiano de Chirico,			
+2025-02-23,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/23.02.2025.mp4,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/23.02.2025audio.m4a,,,Il giusto giudizio di Dio,Romani 2:1-5,Samuele,			
+2025-03-02,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/02.03.2025.mp4,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/02.03.2025audio.m4a,,,Il giusto giudizio di Dio,Romani 2:6-16,Samuele,			
+2025-03-09,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/09.03.2025.mp4,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/09.03.2025audio.m4a,,,,Matteo 6:1-18,Rino Sciaraffa,			
+2025-03-17,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/17.03.2025.mp4,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/17.03.2025audio.m4a,,,,Salmo 90,Andy Hamilton,			
+2025-03-23,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/23.03.2025.mp4,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/23.03.2025audio.m4a,,,False sicurezze VS vera appartenenza,Romani 2:17-29,Fabio,			
+2025-03-30,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/30.03.2025.mp4,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/30.03.2025audio.m4a,,,i privilegi umani giudicano la grazia di Dio,Romani 3:1-8,Samuele,			
+2025-04-06,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/06-04-25.mp4,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/06-04-25.m4a,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/06-04-25+Nessuno...+Neppure+Uno.pdf,,Nessuno... neppure uno,Romani 3:9-20,Fabio,			
+2025-04-13,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/130425.mp4 ,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/130425.m4a,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/130425.txt,,Chiesa e SocietÃ ,Matteo 10:16,Francesco Abortivi,			
+2025-04-20,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/20.04.2025.mp4,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/20.04.2025audio.m4a,,,"La Pasqua oggi, tra passato, presente e futuro",Esodo 12:1-14,Samuele,			
+2025-04-27,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/270425.mp4,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/270425.m4a,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/270425.txt,,Dio Rivela la sua Giustizia,Romani 3:21-22,Fabio,			
+2025-05-04,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/04.05.2025.mp4,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/04.05.2025audio.m4a ,,,La giustizia di Dio,Romani 3:22-24,Samuele,			
+2025-05-11,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/110525.mp4,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/110525.m4a,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/110525.txt ,,Come Lodare Dio,Salmo 100,Fabio,			
+2025-05-18,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/18.5.2025.mp4,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/18.5.2025audio.m4a,,,La legge Ã¨ uguale per tutti,Romani 1-2-3,Simone Moretti,			
+2025-05-25,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/250525.mp4,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/250525.m4a,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/250525.txt,,La chiamata della tua vita,Marco 2:13-17,Oscar Bassett,			
+2025-06-01,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/01.06.2025.mp4,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/01.06.2025audio.m4a,,,La giustizia di Dio nel sangue di Cristo,Romani 3:25-26,Fabio,			
+2025-06-08,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/080625.mp4,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/080625.m4a,,,Discelpoli radicali,Luca 6:20-26,Franco Deriu,			
+2025-06-15,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/15.06.2025.mp4,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/15.06.2025audio.m4a,,,Il tuo vanto davanti alla grazia di Dio,Romani 3:27-31,Samuele,			
+2025-06-22,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/22.06.2025.mp4,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/22.06.2025audio.m4a,,,"La fede: il canale attraverso cui Dio opera la sua grazia, lâ€™esempio di Abraamo",Romani 4:1-8,Samuele,			
+2025-06-29,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/290625.m4a,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/290625.mp4,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/290625.txt,,"UNA FEDE CHE GIUSTIFICA: la nostra identitÃ  nella grazia, non nelle opere",Romani 4:-9-17,Fabio,			
+2025-07-06,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/06.07.2025.mp4,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/06.07.2025audio.m4a,,,"la nostra identitÃ  nella grazia, non nelle opere",Rom. 4:18-25,Samuele,			
+2025-07-13,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/130725.mp4,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/130725.m4a,,,DOVâ€™Eâ€™ LA TUA FESTA?,Luke 15:11-32,"Alessandro Naldoni			
+Paolo Nagellini			
+Emanuele Berti",			
+2025-07-20,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/200725.mp4,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/200725.m4a,,,la vera fede combatte la paura!,Numeri 13 e 14,Samuele,			
+2025-07-27,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/270725.mp4,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/270725.m4a,,,COME DIFENDERSI DAI TEMPI DIFFICILI DEGLI ULTIMI GIORNI,2 Timoteo 3,Fabio,			
+2024-01-07,,,,,Lezione dei Magi,Matteo 2:1-12,Samuele,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/07.01.2024partial.mp4			
+2024-01-14,,,,,I paradossi delle parabole,Matteo 20:1-16,Rino Sciaraffa,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/14.01.2024.mp4			
+2024-01-21,,,,,Il tumulto di Efeso,Atti 19:23-41,"Alessandro, Andrea, Emanuele",https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/21.01.2024Ale_Em.mp4			
+2024-01-28,,,,,Paolo in Macedonia e in Grecia,Atti 20:1-16,Samuele,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/28.01.2024.mp4			
+2024-02-11,,,,,Filemone,Filemone,Marco Saillen,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/11.02.2024.mp4			
+2024-02-18,,,,,"Paolo verso Gerusalemme, lâ€™amore dei credenti e il costo del discepolato",Atti 21:1-16,Samuele,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/18.02.2024.mp4			
+2024-02-25,,,,,L'umiltÃ  che alimenta l'unitÃ ,Atti 21:17-26,Fabio,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/25.02.2024.mp4			
+2024-03-03,,,,,Congiura contro Paolo: lâ€™inganno dellâ€™uomo e la provvidenza di Dio,Atti 21:27-40,Samuele,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/03.03.2024.mp4			
+2024-03-10,,,,,"Sovrano sul lavoro, sovrano sul sesso",Genesi 39:1-12,Michel di Felice Antonio,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/10+marzo.mp4			
+2024-03-17,,,,,Qual Ã¨ la tua storia?,Atti 22:1-21,Fabio,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/17.03.2024.mp4			
+2024-03-24,,,,,Casa dolce casa,1 Pietro 2:1-5,Stefano Standridge,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/24032024.mp4			
+2024-03-31,,,,,La Pasqua cristiana,Esodo 12:42,Samuele,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/31.03.2024.mp4			
+2024-04-07,,,,,La provvidenza di Dio,Atti 22:22-23:11,Fabio,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/07.04.2024.mp4			
+2024-04-14,,,,,Momenti della vita di Pietro che lo hanno formato,Mt 12:22-29	 Lu 22:59-62	 Gv 21:15-19	 At 1:3,Franco Deriu,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/15.04.2024.mp4
+2024-04-21,,,,,Congiura contro Paolo: lâ€™inganno dellâ€™uomo e la fedele provvidenza di Dio,Atti 23:12-35,Samuele,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/21.04.2024.mp4			
+2024-04-28,,,,,Paolo si difende davanti al governatore Felice,Atti 24:1-21,Fabio,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/28.04.2024.mp4			
+2024-05-05,,,,,Non procrastinare ,Atti 24:22-27,Fabio,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/05.05.2024.mp4			
+2024-05-12,,,,,Paolo davanti a Festo,Atti 25:1-12,"Alessandro, Andrea e Emanuele",https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/12.05.2024BB.mp4			
+2024-05-19,,,,,Viaggio nel peccato.. Immagini della storia dell'uomo,Atti 25:13-27,Samuele,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/05.19.2024.mp4			
+2024-05-26,,,,,Radicalmente cambiato,Atti 26:1-18,Fabio,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/26.05.2024.mp4			
+2024-06-02,,,,,tutto secondo i piani di Dio: il prigioniero Paolo sarÃ  giudicato a Roma!,Atti 26:19-32,Samuele,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/02.06.2024.mp4			
+2024-06-09,,,,,Atleti di Cristo,Filippesi 3:15-21,Simone Bertolini,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/09.06.2024.mp4			
+2024-06-16,,,,,Il viaggio di un testimone di Cristo. La fede tra prove di provvidenza per essere liberati non dalla prova ma nella prova - parte 1,Atti 27:1-26,Samuele,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/16.06.2024.mp4			
+2024-06-23,,,,,Il viaggio di un testimone di Cristo. La fede tra prove di provvidenza per essere liberati non dalla prova ma nella prova - parte 2,Atti 27:1-26,Samuele,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/23.06.2024.mp4			
+2024-06-30,,,,,Leader di Dio - parte 1,Atti 27:27-44,Fabio,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/30-giugno-2024.mp4			
+2024-07-07,,,,,Leader di Dio - parte 2,Atti 27:27-44,Fabio,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/7+luglio+2024.mp4			
+2024-07-21,,,,,salvati per servire il Dio che provvede e mantiene le sue promesse,Atti 28:1-16,Samuele,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/21.07.2024audio.mp4			
+2024-07-28,,,,,To be continued.. Una storia da scrivere,Atti 28:17-31,Fabio,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/28.07.2024.mp4			
+,,,,,,,,			
+2024-09-08,,,,,Dalle Stelle alle stalle - parte 1,2 Cronache 14-15,Fabio,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/08.09.2024.mp4			
+2024-09-15,,,,,Dalle Stelle alle stalle - parte 2,2 Cronache 16,Fabio,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/15.09.2024.mp4			
+2024-09-22,,,,,La chiesa che serve,,Franco Deriu - ritiro chiesa,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/sessione+1A.m4a			
+2024-09-22,,,,,La chiesa che serve,,Franco Deriu - ritiro chiesa,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/sessione+1B.m4a			
+2024-09-22,,,,,La chiesa che serve,,Franco Deriu - ritiro chiesa,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/Sessione+2.m4a			
+2024-09-22,,,,,La chiesa che serve,,Franco Deriu - ritiro chiesa,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/Sessione+3.m4a			
+2024-09-22,,,,,La chiesa che serve,,Franco Deriu - ritiro chiesa,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/Sessione+4.m4a			
+2024-09-22,,,,,La chiesa che serve,,Franco Deriu - ritiro chiesa,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/Sessione+5.m4a			
+2024-09-29,,,,,Una strana chiamata - parte 1,Esodo 3:1-10,Samuele,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/29.09.2024.mp4			
+2024-10-13,,,,,,1 Tessalonicesi 5:1-11,Nunzio Sabatasso,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/13.10.2024.mp4			
+2024-10-20,,,,,IdentitÃ  in Cristo,Romani 1:1,Fabio,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/20.10.2024.mp4			
+2024-10-27,,,,,Una trana chiamata - parte 2,Esodo 3:1-10,Samuele,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/27.10.2024.mp4			
+2024-11-03,,,,,il Vangelo di Dio,Romani 1:1-7,Fabio,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/03.11.2024.mp4			
+2024-11-10,,,,,Una trana chiamata - parte 3,Esodo 3:1-10,Samuele,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/10.11.2024.mp4			
+2024-11-17,,,,,GesÃ¹ ti cerca,Luca 19:1-10,Luigi Palombo,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/17.11.2024.mp4			
+2024-11-24,,,,,il vangelo che opera nella vita del credente,Romani 1:8-15,Fabio,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/24.11.2024.mp4			
+2024-12-01,,,,,,Luca 5:12-16,Francesco Grassi,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/01.12.2024.mp4			
+2024-12-08,,,,,,Isaia 42:1-3,Robby Roberts,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/08.12.2024.mp4			
+2024-12-15,,,,,,Luca 10:25-37,"Predicazione Alejandro, Emanuele e Alessandro",https://drive.google.com/file/d/1-HouHQdKCobgXF8rgdFyfNUi2zAfcyah/view?usp=sharing			
+2024-12-22,,,,,Il dono di Dio per l'umanitÃ ,Luca 2:1-20,Fabio,https://drive.google.com/file/d/1vOw5ND-fdJD3rGieM5G9CcgOX4BEuRSa/view?usp=sharing			
+2024-12-29,,,,,,,Samuele,https://drive.google.com/file/d/1wHIvljRosycHFF1PRFNxF5HtKx9XI_6y			
+2023-03-12,,,,,Missione im-possible,Atti 1:1-11,Fabio,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/120323.mp4			
+2023-03-19,,,,,Lâ€™attesa dello Spirito Santo,Atti 1:12-26,Samuele,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/IMG_8310.mp4			
+2023-03-26,,,,,Promessa Mantenuta,Atti 2:1-21,Fabio,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/IMG_1022.MOV			
+2023-04-02,,,,,GesÃ¹ Ã¨ il Messia,Atti 2:21-36,Fabio,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/020423.mp4			
+2023-04-09,,,,,"Pasqua: ""il Dio risorto, davanti alla sua tomba vuota, chiede anche a noi chi stiamo cercando!""",Gv. 20:15	Â Gv.Â 6,Samuele,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/090423.mp4		
+2023-04-16,,,,,Le prime conversioni,Atti 2:37-47,Samuele,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/160423.mp4			
+2023-04-30,,,,,L'inizio della persecuzione della chiesa,Atti 4:1-22,Fabio,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/300323.mp4			
+2023-05-07,,,,,La risposta della chiesa: la sua unitÃ  nello Spirito,Atti 4:23-37,Samuele,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/070523.mp4			
+2023-05-14,,,,,Anania e Saffira,Atti 5:1-11,Fabio,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/140523.mp4			
+2023-05-21,,,,,La potenza dello Spirito Santo ,Atti 5:12-32,Samuele,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/210523.mp4			
+2023-05-28,,,,,Guidati dal timore di Dio,Atti 5:33-41,Daniele Pasquale,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/280523.mp4			
+2023-06-04,,,,,Conflitti e fedeltÃ ,Atti 6,Fabio,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/04_06_2023.mp4			
+2023-06-11,,,,,Il discorso di Stefano diacono e apologeta,Atti 7,Samuele,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/11_06_2023.mp4			
+2023-06-18,,,,,Filippo.. Ubbidienza oltre le discriminazioni,Atti 8,Fabio,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/18_06_23.mp4			
+2023-06-25,,,,,Conversione di Saulo,Atti 9:1-31,Cristiano De Chirico,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/25.06.2023.mp4			
+2023-07-02,,,,,Il Vangelo testimoniato con delle guarigioni,Atti 9:32-43,Samuele,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/02_07_2023_low.mp4			
+2023-07-16,,,,,Cornelio,Atti 10,Fabio,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/16_07_2023.mp4			
+2023-07-30,,,,,Chiesa di Antiochia,Atti 11:19-30,Fabio,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/07_30_2023.mp4			
+2023-09-03,,,,,Persecuzione e liberazione da un re che si sostiuisce a Dio,Atti 12,Samuele,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/03.09.2023.mp4			
+2023-09-10,,,,,Primo viaggio missionario - prima parte,Atti 13:1-13,Fabio,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/10_09_2023.mp4			
+2023-09-17,,,,,Primo viaggio missionario - seconda parte,Atti 13:14-52,Fabio,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/17.09.2023.mp4			
+2023-09-24,,,,,Paolo e Barnaba a Iconio,Atti 14,Samuele,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/24.09.2023+test.mp4			
+2023-10-01,,,,,Sola grazia,Atti 15:1-12,Fabio,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/01.10.2023+edit.mp4			
+2023-10-08,,,,,La conferenza di Gerusalemme,Atti 15:13-35,Samuele,https://chiesa-logos.s3.eu-west-1.amazonaws.com/08.10.2023.mp4			
+2023-10-15,,,,,Cambio di programma,Atti 15:36-16:10,Fabio,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/15.10.2023.mp4			
+2023-10-22,,,,,"Paolo a Filippi, Prigionia di Paolo e Sila",Atti 16:11-24,Samuele,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/22.10.2023.mp4			
+2023-11-05,,,,,"Paolo a Filippi, Prigionia di Paolo e Sila",Atti 16:25-40,Samuele,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/05.11.2023.mp4			
+2023-11-19,,,,,Paolo a Atene,Atti 17:16-34,Andrea Becciolini,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/19.11.2023.mp4			
+2023-11-26,,,,,Battesimi,--,Testimonianza Casian,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/07.casian.mp4			
+2023-11-26,,,,,Battesimi,--,Testimonianza Tamara,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/04.tamara.mp4			
+2023-11-26,,,,,Battesimi,--,Testimonianza Beatrice,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/03.beatrice.mp4			
+2023-11-26,,,,,Battesimi,--,Testimonianza Daniela,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/02.daniela.mp4			
+2023-11-26,,,,,Battesimi - Predicazione,Giovanni 8:1-11,Fabio,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/01.intro_Fabio.mp4			
+2023-12-03,,,,,Paolo a Corinto,Atti 18:1-17,Luca Guadagno,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/03.12.23.mp4			
+2023-12-10,,,,,Terzo viaggio missionario,Atti 18:18-28,Samuele,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/10.12.23.mp4			
+2023-12-17,,,,,Cosa vuoi bruciare per Dio?,Atti 19:1-22,Fabio,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/17.12.23audio.mp3			
+2023-12-24,,,,,il Natale della speranza,LucaÂ 2:25-38,Samuele,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/24.12.23.mp4			
+2023-12-31,,,,,10 Propositi per il nuovo anno,Proverbi 3,Fabio,https://chiesa-logos.s3.eu-west-1.amazonaws.com/Sermoni/31.12.23.mp4			
